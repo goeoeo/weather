@@ -1,0 +1,28 @@
+{
+    "name": "phpdi/weather",
+    "description": "today weather",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "chenyu",
+            "email": "977564830@qq.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "phpunit/phpunit": "^7.4",
+        "mockery/mockery": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phpdi\\Weather\\": "./src"
+        }
+    },
+    "extra":{
+        "laravel":{
+            "providers":[
+                "Phpdi\\Weather\\ServiceProvider"
+            ]
+        }
+    }
+}
