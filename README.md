@@ -6,7 +6,7 @@
 ## Installing
 
 ```shell
-$ composer require phpdi/weather -vvv
+$ composer require phpdic/weather -vvv
 ```
 
 ## Usage
