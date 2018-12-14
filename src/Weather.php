@@ -18,7 +18,7 @@ class Weather
     protected $key;
     protected $guzzleOptions = [];
 
-    public function __construct(string $key)
+    public function __construct( $key)
     {
         $this->key=$key;
     }
@@ -42,7 +42,7 @@ class Weather
      * @throws HttpException
      * @throws InvalidArgumentException
      */
-    public function getWeather($city, string $type = 'base', string $format = 'json')
+    public function getWeather($city,  $type = 'base',  $format = 'json')
     {
         $url = 'https://restapi.amap.com/v3/weather/weatherInfo';
 
@@ -75,6 +75,32 @@ class Weather
 
 
 
+    }
+
+    /**
+     * 获取实时天气
+     * @param $city
+     * @param string $format
+     * @return false|string
+     * @throws HttpException
+     * @throws InvalidArgumentException
+     */
+    public function getLiveWeather($city,$format='json')
+    {
+        return $this->getWeather($city, 'base', $format);
+    }
+
+    /**
+     * 获取天气预报
+     * @param $city
+     * @param string $format
+     * @return false|string
+     * @throws HttpException
+     * @throws InvalidArgumentException
+     */
+    public function getForecastsWeather($city,$format='json')
+    {
+        return $this->getWeather($city, 'all', $format);
     }
 
 

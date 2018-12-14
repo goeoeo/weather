@@ -137,4 +137,25 @@ class WeatherTest extends TestCase
         $this->fail('检查format参数,测试失败');
     }
 
+
+    public function testGetLiveWeather()
+    {
+        //将getWeather接口模拟为返回固定内容,以测试参数传递是否正确
+        /**@var \Phpdi\Weather\Weather @w*/
+        $w=\Mockery::mock(Weather::class,['mock-key'])->makePartial();
+
+        $w->expects()->getWeather('成都', 'base', 'json')->andReturn(['success' => true]);
+
+        $this->assertSame(['success' => true], $w->getLiveWeather('成都'));
+    }
+
+    public function testGetForecastsWeather()
+    {
+        $w=\Mockery::mock(Weather::class,['mock-key'])->makePartial();
+
+        $w->expects()->getWeather('成都', 'all', 'json')->andReturn(['success' => true]);
+
+        $this->assertSame(['success' => true], $w->getForecastsWeather('成都'));
+    }
+
 }
